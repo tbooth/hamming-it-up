@@ -11,8 +11,8 @@ CHARACTERS = ['A', 'G', 'T', 'C']
 def string_generator(size=63, chars=tuple(CHARACTERS)):
     return ''.join(random.choice(chars) for _ in range(size))
 
-length_of_strings = 63
-number_of_strings = 10
+length_of_strings = 101
+number_of_strings = 200
 
 # compute string hamming time
 def string_time():
@@ -31,7 +31,7 @@ naive_hamming_distance(s1, s2)
     # timeit.repeat statement
     times = timeit.repeat(setup=SETUP_CODE,
                           stmt=TEST_CODE,
-                          repeat=3,
+                          repeat=10,
                           number=10000)
 
     # printing minimum exec. time
@@ -55,7 +55,7 @@ hamming_distance(s1, s2)
     # timeit.repeat statement
     times = timeit.repeat(setup=SETUP_CODE,
                           stmt=TEST_CODE,
-                          repeat=3,
+                          repeat=10,
                           number=10000)
 
     # printing minimum exec. time
@@ -86,17 +86,17 @@ binary_hamming_dist_calc(s1, s2)
     print('Binary hamming string search time (not including preprocessing): {}'.format(min(times)))
 
 # Validate that my alternative approach gives the same result as naive_hamming_distance(s1,s2)
-from timming3 import timming_distance
+from timming import timming_distance
 list_of_strings1 = [string_generator() for i in range(10)]
 list_of_strings2 = [string_generator() for i in range(10)]
 for s1 in list_of_strings1:
     for s2 in list_of_strings2:
         assert timming_distance(s1, s2) == naive_hamming_distance(s1,s2)
 
-# compute binary hamming time (using the Tim method)
+# compute binary hamming time (using the Tim-hamming method)
 def timming_preprocessed_time():
     SETUP_CODE_PREPROCESSED_BINARY = '''
-from timming3 import string_to_bin, hamming_dist_calc
+from timming import string_to_bin, hamming_dist_calc
 from random import choice
 from __main__ import string_generator, length_of_strings, number_of_strings
 list_of_binary_strings1 = [string_to_bin(string_generator(length_of_strings)) for i in range(number_of_strings)]
@@ -119,5 +119,4 @@ hamming_dist_calc(s1, s2)
 if __name__ == "__main__":
     string_time()
     binary_preprocessed_time()
-  #  binary_inc_proccessing_time()
     timming_preprocessed_time()

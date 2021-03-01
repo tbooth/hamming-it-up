@@ -32,7 +32,7 @@ def string_to_bin(text):
     return res
 
 
-# counter with a lookup table is faster if Hamming distance is high
+# counter with a lookup table is faster if ones are not sparse
 tsize = 16
 tmask = 2**tsize-1
 tcounts = [bin(i).count('1') for i in range(2**tsize)]
