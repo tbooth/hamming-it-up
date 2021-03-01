@@ -2,6 +2,13 @@
 
 An algorithm for calculating hamming distance faster (with a small alphabet size).
 
+## In this fork...
+
+In the @tbooth fork I've implemented a version of the Rahimi method to provide a speed comparison - see timming.py
+Note that this only accounts for full comparisons (no max dist) and doensn't allow for N's.
+
+## Overview
+
  Hamming distance between two strings of equal length is the number of positions at which the corresponding symbols are 
  different. In other words, it measures the minimum number of substitutions required to change one string into the 
  other. For example, it requires one substitution to turn CAT into TAT.
